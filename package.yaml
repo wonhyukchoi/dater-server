@@ -1,5 +1,5 @@
 name:                dater-server
-version:             0.1.0.0
+version:             1.0.0
 github:              "wonhyukchoi/dater-server"
 license:             BSD3
 author:              "Wonhyuk Choi"
@@ -25,6 +25,8 @@ dependencies:
 - yesod-core
 - text
 - dater
+- shakespeare
+- blaze-html
 
 ghc-options:
 - -Wall

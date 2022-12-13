@@ -4,9 +4,14 @@
 {-# LANGUAGE TypeFamilies      #-}
 {-# LANGUAGE ViewPatterns      #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
+{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
+{-# OPTIONS_GHC -fno-warn-unused-local-binds #-}
 
 import Data.Text
 import Yesod
+
+import Data.Either (isLeft)
+import Text.Cassius (renderCss)
 import Dater (process)
 
 data App = App
@@ -33,20 +38,38 @@ getDaterR = do
   defaultLayout $ do
     setTitle "Dater: A Web Version"
     let input = case formResult of
-                  FormSuccess val -> show val
+                  FormSuccess val -> unpack val
                   FormFailure xs  -> show xs
                   _               -> ""
     processed <- liftIO $ process input
-    let result = if formResult == FormMissing
-                   then ""
-                   else case processed of
-                     Left err  -> err
-                     Right val -> val
+    let 
+        result :: Text
+        result = pack $ case processed of
+                   Left err  -> err
+                   Right val -> val
+
+        textColor :: Text
+        textColor = if isLeft processed
+                      then "red"
+                      else "black"
+
+        css = renderCss ([cassius|
+                         #result
+                            color: #{textColor}
+                        |] undefined)
     [whamlet|
-      <h1> Dater
-      <form enctype=#{enctype}>
-          ^{widget}
-      <p> #{result}
+      $doctype 5
+      <head>
+          <style>
+            #{css}
+      <body>
+          <h1> Dater
+          <form enctype=#{enctype}>
+              ^{widget}
+          $if formResult == FormMissing
+            <p>
+          $else 
+            <p> <span id="result">#{result}
     |]
 
 main :: IO ()
