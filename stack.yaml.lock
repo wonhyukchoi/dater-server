@@ -3,7 +3,18 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    commit: 1105996dc5f2cd13b04534ffd1c77e50f1d9df49
+    git: https://github.com/wonhyukchoi/dater.git
+    name: dater
+    pantry-tree:
+      sha256: 2f78c1991e3d1fd189356bd297c4770dd65b8a89959f3e864cec7a92ddddbe8b
+      size: 1036
+    version: 1.0.0
+  original:
+    commit: 1105996dc5f2cd13b04534ffd1c77e50f1d9df49
+    git: https://github.com/wonhyukchoi/dater.git
 snapshots:
 - completed:
     sha256: 428ec8d5ce932190d3cbe266b9eb3c175cd81e984babf876b64019e2cbe4ea68

@@ -6,9 +6,9 @@ cabal-version: 1.12
 
 name:           dater-server
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/wonhyuk/dater-server#readme>
-homepage:       https://github.com/githubuser/dater-server#readme
-bug-reports:    https://github.com/githubuser/dater-server/issues
+description:    Please see the README on GitHub at <https://github.com/wonhyukchoi/dater-server#readme>
+homepage:       https://github.com/wonhyukchoi/dater-server#readme
+bug-reports:    https://github.com/wonhyukchoi/dater-server/issues
 author:         Wonhyuk Choi
 maintainer:     Wonhyuk Choi
 copyright:      2022 Wonhyuk Choi
@@ -21,24 +21,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/dater-server
-
-library
-  exposed-modules:
-      Add
-      Application
-      Foundation
-      Home
-  other-modules:
-      Paths_dater_server
-  hs-source-dirs:
-      src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
-  build-depends:
-      base >=4.7 && <5
-    , yesod
-    , yesod-core
-  default-language: Haskell2010
+  location: https://github.com/wonhyukchoi/dater-server
 
 executable dater-server-exe
   main-is: Main.hs
@@ -49,22 +32,8 @@ executable dater-server-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , dater-server
-    , yesod
-    , yesod-core
-  default-language: Haskell2010
-
-test-suite dater-server-test
-  type: exitcode-stdio-1.0
-  main-is: Spec.hs
-  other-modules:
-      Paths_dater_server
-  hs-source-dirs:
-      test
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      base >=4.7 && <5
-    , dater-server
+    , dater
+    , text
     , yesod
     , yesod-core
   default-language: Haskell2010
